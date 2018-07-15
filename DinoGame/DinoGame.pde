@@ -61,7 +61,7 @@ void setup() {
   bird = loadImage("berd.png");
   bird1 = loadImage("berd2.png");
 
-  pop = new Population(500); //<<number of dinosaurs in each generation
+  pop = new Population(750); //<<number of dinosaurs in each generation
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 void draw() {
@@ -239,7 +239,7 @@ void updateObstacles() {
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //moves obstacles to the left based on the speed of the game 
 void moveObstacles() {
-  println(speed);
+  println("The current score is " + floor(pop.populationLife/3.0) + ".");
   for (int i = 0; i< obstacles.size(); i++) {
     obstacles.get(i).move(speed);
     if (obstacles.get(i).posX < -playerXpos) { 
