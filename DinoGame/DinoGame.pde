@@ -233,15 +233,15 @@ void keyPressed() {
 //called every frame
 void updateObstacles() {
   obstacleTimer ++;
-  speed += 0.002;
+  speed += 0.02;
   if (obstacleTimer > minimumTimeBetweenObstacles + randomAddition) { //if the obstacle timer is high enough then add a new obstacle
     addObstacle();
   }
-  groundCounter ++;
-  if (groundCounter> 10) { //every 10 frames add a ground bit
-    groundCounter =0;
-    grounds.add(new Ground());
-  }
+  //groundCounter ++;
+  //if (groundCounter> 10) { //every 10 frames add a ground bit
+  //  groundCounter =0;
+  //  grounds.add(new Ground());
+  //}
 
   moveObstacles();//move everything
   if (!showNothing) {//show everything
