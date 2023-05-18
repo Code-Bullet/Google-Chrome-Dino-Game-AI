@@ -33,6 +33,7 @@ int obstacleTimer = 0;
 int minimumTimeBetweenObstacles = 60;
 int randomAddition = 0;
 int groundCounter = 0;
+int highScore = 0;
 float speed = 10;
 
 int groundHeight = 250;
@@ -136,6 +137,12 @@ void writeInfo() {
     //text(, width/2-180, height-30);
     textAlign(RIGHT);
     text("Gen: " + (genPlayerTemp.gen +1), width -40, height-30);
+    
+    if (genPlayerTemp.score >= highScore) {
+      highScore = genPlayerTemp.score; 
+    }
+    
+    text("Highscore: " + (highScore), width / 2, height - 30);
     textSize(20);
     int x = 580;
     text("Distace to next obstacle", x, 18+44.44444);
@@ -157,6 +164,12 @@ void writeInfo() {
     textAlign(RIGHT);
 
     text("Gen: " + (pop.gen +1), width -40, height-30);
+    
+    if (floor(pop.populationLife/3.0) >= highScore) {
+      highScore = floor(pop.populationLife/3.0); 
+    }
+    
+    text("Highscore: " + (highScore), width / 2, height - 30);
     textSize(20);
     int x = 580;
     text("Distace to next obstacle", x, 18+44.44444);
@@ -220,15 +233,15 @@ void keyPressed() {
 //called every frame
 void updateObstacles() {
   obstacleTimer ++;
-  speed += 0.002;
+  speed += 0.02;
   if (obstacleTimer > minimumTimeBetweenObstacles + randomAddition) { //if the obstacle timer is high enough then add a new obstacle
     addObstacle();
   }
-  groundCounter ++;
-  if (groundCounter> 10) { //every 10 frames add a ground bit
-    groundCounter =0;
-    grounds.add(new Ground());
-  }
+  //groundCounter ++;
+  //if (groundCounter> 10) { //every 10 frames add a ground bit
+  //  groundCounter =0;
+  //  grounds.add(new Ground());
+  //}
 
   moveObstacles();//move everything
   if (!showNothing) {//show everything
